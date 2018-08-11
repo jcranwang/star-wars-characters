@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CardList from "../components/CardList";
+import Scroll from "../components/Scroll";
 import "./App.css";
 
 class App extends Component {
@@ -36,7 +37,9 @@ class App extends Component {
           </div>
           <h2 className="white code static dib">Characters Collection</h2>
         </div>
-        <CardList characters={characters}/>
+        <Scroll>
+          <CardList characters={characters} />
+        </Scroll>
       </div>
     );
   }
