@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CardList from "../components/CardList";
 import Scroll from "../components/Scroll";
+import SearchBox from "../components/SearchBox";
 import "./App.css";
 
 class App extends Component {
@@ -27,15 +28,11 @@ class App extends Component {
     const { characters } = this.state;
     return (
       <div className="App">
-        <div className="bg-black mb3">
+        <div className="bg-black mb3 tc">
           <div className="mw-100">
-            <img
-              className="h5"
-              src="http://imageshack.com/a/img922/3783/oyvsRd.png"
-              alt="Star Wars"
-            />
+            <img className="h5" src={require("../media/title.jpg")} alt="Star Wars" />
           </div>
-          <h2 className="white code static dib">Characters Collection</h2>
+          <SearchBox />
         </div>
         <Scroll>
           <CardList characters={characters} />
