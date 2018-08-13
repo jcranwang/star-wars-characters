@@ -5,10 +5,11 @@ import SearchBox from "../components/SearchBox";
 import "./App.css";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      characters: []
+      characters: [],
+      searchField: ""
     };
   }
 
@@ -24,18 +25,30 @@ class App extends Component {
     }
   }
 
+  onSearchChange = event => {
+    this.setState({ searchField: event.target.value });
+  };
+
   render() {
-    const { characters } = this.state;
+    const { characters, searchField } = this.state;
+    const filterCharacters = characters.filter(character => {
+      return character.name.toLowerCase().includes(searchField.toLowerCase());
+    });
+
     return (
       <div className="App">
         <div className="bg-black mb3 tc">
           <div className="mw-100">
-            <img className="h5" src={require("../media/title.jpg")} alt="Star Wars" />
+            <img
+              className="h5"
+              src={require("../media/title.jpg")}
+              alt="Star Wars"
+            />
           </div>
-          <SearchBox />
+          <SearchBox searchChange={this.onSearchChange} />
         </div>
         <Scroll>
-          <CardList characters={characters} />
+          <CardList characters={filterCharacters} />
         </Scroll>
       </div>
     );

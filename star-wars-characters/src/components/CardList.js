@@ -7,6 +7,7 @@ const CardList = ({ characters }) => {
       {characters.map(character => {
         return (
           <Card
+            key={character.name}
             name={character.name}
             height={character.height}
             mass={character.mass}
